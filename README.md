@@ -56,4 +56,4 @@ Please be sure to refer to the <a href="https://forums.garmin.com/developer/conn
 
 [documentation]: https://github.com/garmin/connectiq-companion-app-sdk-ios/tree/main/documentation
 [License Agreement]: https://github.com/garmin/connectiq-companion-app-sdk-ios/blob/main/License.pdf
-[example app]: https://github.com/garmin/connectiq-companion-app-sdk-ios
+[example app]: https://github.com/garmin/connectiq-companion-app-example-ios
