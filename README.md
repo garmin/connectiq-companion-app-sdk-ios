@@ -4,7 +4,7 @@ The Connect IQ Mobile SDK allows companion iOS applications to be created that i
 
 ## SDK License
 
-- By downlooading the ConnectIQ Mobile SDK you accept our [License Agreement].
+- By downloading the ConnectIQ Mobile SDK you accept our [License Agreement].
 
 ## Official documentation
 
