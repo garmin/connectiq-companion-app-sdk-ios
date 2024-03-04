@@ -6,9 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IQConstants.h"
-#import "IQDevice.h"
-#import "IQApp.h"
+#import <ConnectIQ/IQConstants.h>
+#import <ConnectIQ/IQDevice.h>
+#import <ConnectIQ/IQApp.h>
 
 // --------------------------------------------------------------------------------
 #pragma mark - PUBLIC TYPES
