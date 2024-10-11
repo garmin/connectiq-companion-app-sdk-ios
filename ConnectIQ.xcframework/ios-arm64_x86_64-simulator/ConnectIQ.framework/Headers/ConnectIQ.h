@@ -88,8 +88,7 @@ typedef void (^IQSendMessageCompletion)(IQSendMessageResult result);
 #pragma mark - INITIALIZATION
 // --------------------------------------------------------------------------------
 
-/// @brief  Initializes the ConnectIQ SDK with startup parameters necessary for
-///         its operation.
+/// @brief  Initializes the ConnectIQ SDK for use with a URL Scheme.
 ///
 /// @param  urlScheme The URL scheme for this companion app. When Garmin Connect
 ///                   Mobile is launched, it will return to the companion app by
@@ -98,6 +97,18 @@ typedef void (^IQSendMessageCompletion)(IQSendMessageResult result);
 ///                   companion app about events that require user input. If this
 ///                   is nil, the SDK's default UI will be used.
 - (void)initializeWithUrlScheme:(NSString *)urlScheme uiOverrideDelegate:(id<IQUIOverrideDelegate>)delegate;
+
+/// @brief  Initializes the ConnectIQ SDK for use with Universal links.
+///
+/// @param  urlHost The URL host for this companion app. When Garmin Connect
+///                   Mobile is launched, it will return to the companion app by
+///                   launching a URL with this host. The host URL shall be added
+///                   to associated domains list and shall have an entry in apple-app-site-association
+///                   JSON file hosted on the same domain to be able to launch the companion app
+/// @param  delegate  The delegate that the SDK will use for notifying the
+///                   companion app about events that require user input. If this
+///                   is nil, the SDK's default UI will be used.
+- (void)initializeWithUniversalLinks:(NSString *)urlHost uiOverrideDelegate:(id<IQUIOverrideDelegate>)delegate;
 
 // --------------------------------------------------------------------------------
 #pragma mark - EXTERNAL LAUNCHING
