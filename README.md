@@ -55,5 +55,5 @@ Please be sure to refer to the <a href="https://forums.garmin.com/developer/conn
 [Third-Party Tutorials and Open Source Apps]: https://forums.garmin.com/developer/connect-iq/f/discussion/7961/overview-of-connect-iq-apps-accompanied-with-source-code
 
 [documentation]: https://github.com/garmin/connectiq-companion-app-sdk-ios/tree/main/documentation
-[License Agreement]: https://github.com/garmin/connectiq-companion-app-sdk-ios/blob/main/License.pdf
+[License Agreement]: https://developer.garmin.com/connect-iq/sdk/
 [example app]: https://github.com/garmin/connectiq-companion-app-example-ios
