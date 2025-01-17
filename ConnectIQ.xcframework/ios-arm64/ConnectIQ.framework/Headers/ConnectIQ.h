@@ -6,9 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ConnectIQ/IQConstants.h>
-#import <ConnectIQ/IQDevice.h>
-#import <ConnectIQ/IQApp.h>
+
+#import "IQConstants.h"
+#import "IQDevice.h"
+#import "IQApp.h"
 
 // --------------------------------------------------------------------------------
 #pragma mark - PUBLIC TYPES
@@ -234,6 +235,21 @@ typedef void (^IQSendMessageCompletion)(IQSendMessageResult result);
 /// @param  completion A completion block that will be triggered when the send
 ///                    message operation is complete.
 - (void)sendMessage:(id)message toApp:(IQApp *)app progress:(IQSendMessageProgress)progress completion:(IQSendMessageCompletion)completion;
+
+/// @brief  Begins sending a message to an app while allowing the message to be marked as transient. This method returns immediately.
+///
+/// @param  message    The message to send to the app. This message must be one of
+///                    the following types: NSString, NSNumber, NSNull, NSArray,
+///                    or NSDictionary. Arrays and dictionaries may be nested.
+/// @param  app        The app to send the message to.
+/// @param  progress   A progress block that will be triggered periodically
+///                    throughout the transfer. This is guaranteed to be triggered
+///                    at least once.
+/// @param  completion A completion block that will be triggered when the send
+///                    message operation is complete.
+/// @param  isTransient Flag to mark the message as transient.
+- (void)sendMessage:(id)message toApp:(IQApp *)app progress:(IQSendMessageProgress)progress
+         completion:(IQSendMessageCompletion)completion isTransient:(BOOL)isTransient;
 
 /// @brief  Sends an open app request message request to the device. This method returns immediately.
 ///

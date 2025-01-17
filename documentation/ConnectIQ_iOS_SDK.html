@@ -115,7 +115,7 @@ For the first option, a URL scheme that GCM can send data to must be registered 
 <figcaption></figcaption>
 </figure>
 
-<p>For the universal links option, create a two-way association between your app and your website and specify the URLs that your app handles. An associated domain entry must be registered by the app. To do this, add an entry to the <code>Target &gt; Signing and Capabilities &gt; Associated Domains</code> panel. Enter your website with the prefix <code>applinks</code>. See the Apple documentation for more information on <a href="https://developer.apple.com/documentation/xcode/supporting-associated-domains">supporting associated domains</a> and on <a href="https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app">universal links</a></p>
+<p>For the universal links option, create a two-way association betweem your app and your website and specify the URLs that your app handles. An associated domain entry must be registered by the app. To do this, add an entry to the <code>Target &gt; Signing and Capabilities &gt; Associated Domains</code> panel. Enter your website with the prefix <code>applinks</code>. See the Apple documentation for more information on <a href="https://developer.apple.com/documentation/xcode/supporting-associated-domains">supporting associated domains</a> and on <a href="https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app">universal links</a></p>
 
 <pre><code>![](resources/images/image10.png)
 </code></pre>
@@ -308,6 +308,20 @@ Like the `showConnectIQDeviceSelection` method, by launching GCM, this method ca
     NSLog(@&quot;Send message finished with result %@&quot;,
         NSStringFromSendMessageResult(result));
 }];
+</code></pre>
+
+<p>Optionally, you can mark the message as transient so as to not overwhelm the device&#8217;s message queue if the app generates a high volume of messages using the overloaded method <code>sendMessage:toApp:progress:completion:isTransient:</code></p>
+
+<pre><code class="objective-c">NSArray *message = @[@”hello pi”, @(3.14159)];
+[[ConnectIQ sharedInstance] sendMessage:message
+                                  toApp:app
+                               progress:^(uint32_t sent, uint32_t total) {
+    float percent = 100 * sent / (float)total;
+    NSLog(@&quot;%02.2f%% - %u/%u&quot;, percent, sent, total);
+} completion:^(IQSendMessageResult result) {
+    NSLog(@&quot;Send message finished with result %@&quot;,
+        NSStringFromSendMessageResult(result));
+} isTransient:isTransient];
 </code></pre>
 
 <div id="warning">

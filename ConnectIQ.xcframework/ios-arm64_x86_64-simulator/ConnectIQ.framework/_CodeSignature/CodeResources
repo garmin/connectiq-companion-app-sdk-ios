@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/ConnectIQ.h</key>
 		<data>
-		Osk3FF4E0ERdrZdjUS9SnNCciuQ=
+		/dpe1n4PpYHN5mQ4yL04YkWVinM=
 		</data>
 		<key>Headers/IQApp.h</key>
 		<data>
-		NDlj8k5C84UPFmD+qEMz2WcZloY=
+		CMQ9wDp2PKaw9dRd8NBYpX9xkzE=
 		</data>
 		<key>Headers/IQAppStatus.h</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		w6/XOV9CR7lU64dXip8lI2dtNiQ=
+		pJidVag8USRtRAYv3TISsRzNUIs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -300,14 +300,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7dLc6vrRoBwWVc9d3ed6S4LKrJ3KvphPGECIbu3bs4o=
+			VwQMSEQhMbYYS+gwx9S58r6u0uje7xyT0zI7QC9oeJw=
 			</data>
 		</dict>
 		<key>Headers/IQApp.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bSRRooQ0FKFr3BgrFolAnkU402889YFHrH+6EEca3cg=
+			KhyZorkoK2Qipuzee5aE5ENCarHR+Ni21GdxCV3FQ0s=
 			</data>
 		</dict>
 		<key>Headers/IQAppStatus.h</key>
