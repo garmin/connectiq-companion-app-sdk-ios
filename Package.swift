@@ -1,5 +1,4 @@
-// swift-tools-version: 5.7
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.8
 
 import PackageDescription
 
@@ -14,6 +13,10 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "ConnectIQ",
-            path: "ConnectIQ.xcframework"),
+            path: "ConnectIQ.xcframework",
+            cSettings: [
+                .headerSearchPath("include"),
+                .define("NS_BLOCK_ASSERTIONS", to: "1", .when(configuration: .release))
+            ]),
     ]
 )

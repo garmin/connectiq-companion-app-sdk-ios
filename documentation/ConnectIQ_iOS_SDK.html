@@ -17,7 +17,7 @@
 
 <div id="title">Connect IQ Mobile SDK</div>
 <div id="tagline">A Guide to building companion mobile apps on iOS for Monkey C applications</div>
-<div id="version">Version 1.7.0</div>
+<div id="version">Version 1.8.0</div>
 <div class="clear"/>
 
 <h1 id="tableofcontents">Table of Contents</h1>
@@ -43,6 +43,7 @@
 <ul>
 <li><a href="#usingurlscheme">Using URL scheme</a></li>
 <li><a href="#usinguniversallinks">Using Universal links</a></li>
+<li><a href="#cbcentralmanagerrestorationidentifier">CBCentralManager Restoration Identifier</a></li>
 </ul>
 </li>
 <li><a href="#implementingauioverridedelegate">Implementing a UI override delegate</a></li>
@@ -152,12 +153,32 @@ For the first option, a URL scheme that GCM can send data to must be registered 
 <h4 id="usinguniversallinks">Using Universal links</h4>
 
 <pre><code class="objective-c">[[ConnectIQ sharedInstance]] initializeWithUniversalLinks:@&quot;example.com/devices-list&quot;
-                                 uiOverrideDelegate:self];
+                                       uiOverrideDelegate:self];
 </code></pre>
 
 <p>The host URL must be the same website chosen in Step 4 of <em>Configuring a project to use the Mobile SDK</em>.</p>
 
 <p>When invoking a method of the <code>ConnectIQ</code> class that requires GCM to be installed and it is not present on the iOS system, by default an alert dialog will be shown to the user that allows them to go to the Apple App Store page for GCM to install it. By passing an instance of an object that conforms to the <code>IQUIOverrideDelegate</code> protocol here, custom behavior or a specialized UI may be specified in this case. To use the default alert dialog and behavior, pass <code>nil</code>.</p>
+
+<h3 id="cbcentralmanagerrestorationidentifier">CBCentralManager Restoration Identifier</h3>
+
+<p>The Mobile SDK internally uses <code>CBCentralManager</code>. To provide an identifier to use for the <a href="https://developer.apple.com/documentation/corebluetooth/cbcentralmanageroptionrestoreidentifierkey?language=objc">CBCentralManagerOptionRestoreIdentifierKey</a>,
+the initializers for both URL Scheme and Universal Links contain a 3rd parameter for specifying the identifier.</p>
+
+<pre><code class="objective-c">// URL Scheme example
+[[ConnectIQ sharedInstance] initializeWithUrlScheme:@&quot;exapp-123456&quot;
+                                 uiOverrideDelegate:self
+                         stateRestorationIdentifier:@&quot;exapp-123456&quot;];
+
+// Universal Links example
+[[ConnectIQ sharedInstance]] initializeWithUniversalLinks:@&quot;example.com/devices-list&quot;
+                                       uiOverrideDelegate:self
+                               stateRestorationIdentifier:@&quot;exapp-123456&quot;];
+</code></pre>
+
+<p>For information about when iOS will relaunch your app when using the restoration identifier, see <a href="https://developer.apple.com/documentation/technotes/tn3115-bluetooth-state-restoration-app-relaunch-rules">TN3115</a>.</p>
+
+<p>There are two benefits from enabling iOS Bluetooth State restoration. The first benefit is that a suspended app will get relaunched in the background when there is bluetooth activity on the bluetooth devices associated with the restoration identifier. The second benefit is the library gets a call to the willRestoreState delegate with a list of the devices that were restored. At this time we only log this delegate invocation because the typical Garmin Device CIQ Companion app knows what devices it is communicating with and will automatically reconnect them when launched, therefore doing something similar in the willRestoreState callback would be redundant and not handle most of the normal startup use cases.</p>
 
 <h2 id="implementingauioverridedelegate">Implementing a UI override delegate</h2>
 
