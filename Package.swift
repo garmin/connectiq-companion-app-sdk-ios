@@ -13,10 +13,12 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "ConnectIQ",
-            path: "ConnectIQ.xcframework",
-            cSettings: [
-                .headerSearchPath("include"),
-                .define("NS_BLOCK_ASSERTIONS", to: "1", .when(configuration: .release))
-            ]),
+            path: "ConnectIQ.xcframework"),
+        .target(name: "ConnectIQWrapper",
+                dependencies: ["ConnectIQ"],
+                cSettings: [
+                    .headerSearchPath("include"),
+                    .define("NS_BLOCK_ASSERTIONS", to: "1", .when(configuration: .release))
+                ]),
     ]
 )
